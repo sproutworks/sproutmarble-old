@@ -130,13 +130,11 @@
 	BOOL *vWalls = [theMaze getVWalls];
 	
 	
-	
 	for (drawX=0; drawX < numTilesX; drawX++) {
 		cX = drawX;
 		for (drawY=0; drawY < numTilesY; drawY++) {
 			cY = drawY;
 			if (vWalls[drawY*numTilesX + drawX]) {
-				
 				
 				wallVerts[0] = cpv(cX*gridSize + wallThickness, cY*gridSize);
 				wallVerts[1] = cpv(cX*gridSize, (cY)*gridSize);
@@ -391,7 +389,6 @@
 		return;  
    }
 	
-	
 }
 
 - (void)drawView; {
@@ -487,10 +484,6 @@
 	glPushMatrix();
 	//glLoadIdentity();
 	
-	
-	
-	//float xView = 6;
-	//float yView = 10;
 	
 	float xView = 32;
 	float yView = 20;
@@ -888,7 +881,7 @@
         glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, depthRenderbuffer);
     }
     
-    if(glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES) {
+    if (glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES) {
         NSLog(@"failed to make complete framebuffer object %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
         return NO;
     }

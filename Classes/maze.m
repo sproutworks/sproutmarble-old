@@ -8,11 +8,8 @@
 
 #import "maze.h"
 
-
 @implementation Maze
 
-//@synthesize hWalls;
-//@synthesize vWalls;
 
 -(Maze*)initDefault {
 	
@@ -31,7 +28,6 @@
 	srand(time(0));
 	[self create];
 	return self;
-	
 }
 
 -(void)create {
@@ -51,7 +47,6 @@
 	}
 	
 	[self processCell: 0 andY:0];
-	
 }
 
 
@@ -69,13 +64,8 @@
 
 -(void)processCell:(int)curX andY:(int)curY {
 	
-	//int direction = rand() % 4;
-	
-	//NSLog(@"process");
-	
 	int numChoices = 0;
-	int curChoice = 0;
-	
+		
 	BOOL up,down,left,right;
 	up = down = left = right = false;
 	
@@ -96,89 +86,68 @@
 		down = true;
 	}
 
-	int choice = (numChoices) ? rand() % numChoices : 5;
-	
-	int r = rand() % 3;
 	if (rand() % 2 == 1) {
-	// go left
-	if (curX > 0 && [self allWalls: curX-1 andY: curY]) {
-		//if (curChoice++ == choice) {
-			//NSLog(@"remove left");
-			vWalls[curY*wallsX + curX] = false;
-			[self processCell:curX-1 andY: curY];
-		//}
-	}
-		// go down
-		if (curY < wallsY && [self allWalls: curX andY: curY+1]) {
-			//if (curChoice++ == choice) {
-			//NSLog(@"remove down");
-			hWalls[(curY+1)*wallsX + curX] = false;
-			[self processCell:curX andY:curY+1];
-			//}
-		}
-	// go right
-	if (curX < wallsX && [self allWalls: curX+1 andY: curY]) {
-		//if (curChoice++ == choice) {
-			//NSLog(@"remove right");
-		vWalls[curY*wallsX + curX + 1] = false;
-		[self processCell:curX+1 andY:curY];
-		//}
-	}
-	// go up
-	if (curY > 0 && [self allWalls: curX andY: curY-1]) {
-		//if (curChoice++ == choice) {
-			//NSLog(@"remove up");
-			hWalls[(curY)*wallsX + curX] = false;
-			[self processCell:curX andY:curY-1];
-		//}
-	}
+        // go left
+        if (curX > 0 && [self allWalls: curX-1 andY: curY]) {
+            
+            //NSLog(@"remove left");
+            vWalls[curY*wallsX + curX] = false;
+            [self processCell:curX-1 andY: curY];
+        }
+            // go down
+            if (curY < wallsY && [self allWalls: curX andY: curY+1]) {
+                //if (curChoice++ == choice) {
+                //NSLog(@"remove down");
+                hWalls[(curY+1)*wallsX + curX] = false;
+                [self processCell:curX andY:curY+1];
+                //}
+            }
+        // go right
+        if (curX < wallsX && [self allWalls: curX+1 andY: curY]) {
+            //NSLog(@"remove right");
+            vWalls[curY*wallsX + curX + 1] = false;
+            [self processCell:curX+1 andY:curY];
+        }
+        // go up
+        if (curY > 0 && [self allWalls: curX andY: curY-1]) {
+            //NSLog(@"remove up");
+            hWalls[(curY)*wallsX + curX] = false;
+            [self processCell:curX andY:curY-1];
+        }
 	
 	} else {
 		
 		// go right
 		if (curX < wallsX && [self allWalls: curX+1 andY: curY]) {
-			//if (curChoice++ == choice) {
-			//NSLog(@"remove right");
-			vWalls[curY*wallsX + curX + 1] = false;
-			[self processCell:curX+1 andY:curY];
-			//}
+			
+            //NSLog(@"remove right");
+            vWalls[curY*wallsX + curX + 1] = false;
+            [self processCell:curX+1 andY:curY];
+			
 		}
 		
 		// go up
 		if (curY > 0 && [self allWalls: curX andY: curY-1]) {
-			//if (curChoice++ == choice) {
 			//NSLog(@"remove up");
 			hWalls[(curY)*wallsX + curX] = false;
 			[self processCell:curX andY:curY-1];
-			//}
 		}
-		
 		
 		// go down
 		if (curY < wallsY && [self allWalls: curX andY: curY+1]) {
-			//if (curChoice++ == choice) {
 			//NSLog(@"remove down");
 			hWalls[(curY+1)*wallsX + curX] = false;
 			[self processCell:curX andY:curY+1];
-			//}
 		}
-		
 		
 		// go left
 		if (curX > 0 && [self allWalls: curX-1 andY: curY]) {
-			//if (curChoice++ == choice) {
 			//NSLog(@"remove left");
 			vWalls[curY*wallsX + curX] = false;
 			[self processCell:curX-1 andY: curY];
-			//}
 		}
 		
-		
-		
-		
-				
-		
-			}
+    }
 }
 
 @end

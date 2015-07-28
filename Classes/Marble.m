@@ -10,8 +10,6 @@
 
 
 
-
-
 @implementation Marble
 
 
@@ -23,13 +21,12 @@
 	textureNum = 0;
 	intSpeed = 4000;
 	if (1) {
-	
-	
-	speedX = (float)(rand() % 100) / intSpeed;
-	speedY =  (float)(rand() % 100) / intSpeed;
-	size = (float)(rand() % 100)/250;
-	posX = (float)(rand() % 100);
-	posY = (float)(rand() % 100);
+		
+        speedX = (float)(rand() % 100) / intSpeed;
+        speedY =  (float)(rand() % 100) / intSpeed;
+        size = (float)(rand() % 100)/250;
+        posX = (float)(rand() % 100);
+        posY = (float)(rand() % 100);
 	
 	}
 	else {
@@ -175,8 +172,6 @@
 		testTex[row*4 + 1]	= 1;
 		testTex[row*4]	= (float)row/1;
 	}
-	
-	
 	
 	glBindTexture(GL_TEXTURE_2D, textures[textureNum]);
 	glVertexPointer(2, GL_FLOAT, 0, testVerts);
